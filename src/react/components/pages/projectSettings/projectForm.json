@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "${strings.common.displayName}",
+            "type": "string",
+            "pattern": "^[^\\\\\\\\/:*?\\\\\\\"<>|]*$"
+        },
+        "targetConnection": {
+            "title": "${strings.projectSettings.targetConnection.title}",
+            "description": "${strings.projectSettings.targetConnection.description}",
+            "type": "string"
+        },
+        "description": {
+            "title": "${strings.common.description}",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "targetConnection"
+    ]
+}

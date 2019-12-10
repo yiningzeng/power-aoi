@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "${strings.remoteTrainSettings.ip}",
+            "type": "string",
+            "pattern": "^[^\\\\\\\\/:*?\\\\\\\"<>|]*$"
+        }
+    },
+    "required": [
+        "name"
+    ]
+}

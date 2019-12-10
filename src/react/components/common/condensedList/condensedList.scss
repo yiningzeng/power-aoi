@@ -1,0 +1,66 @@
+@import './../../../../assets/sass/theme.scss';
+
+.condensed-list {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    &-header {
+        font-size: 80%;
+        color: #f1f1f1;
+        margin: 0;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: row;
+        i {
+            margin-right: 0.5em;
+        }
+
+        &-toolbar {
+            //width: 100%;
+            //float: right;
+            margin-left: 130px;
+            display: flex;
+            flex-direction: row;
+            &-item {
+                color: #ccc;
+                padding: 1px;
+            }
+            &-item:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-body {
+        flex-grow: 1;
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+        position: relative;
+    }
+}
+
+ul.condensed-list-items {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style-type: none;
+        font-size: 90%;
+        color: #ccc;
+
+        a {
+            cursor: pointer;
+            width: 100%;
+            padding: 0.25em 1em;
+            display: inline-block;
+            text-decoration: none;
+
+            &.active, &:hover {
+                background-color: $lighter-2;
+            }
+        }
+    }
+}

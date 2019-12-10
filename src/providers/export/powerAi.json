@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "title": "${strings.export.providers.powerAi.displayName}",
+    "properties": {
+        "assetState": {
+            "type": "string",
+            "title": "${strings.export.providers.common.properties.assetState.title}",
+            "description": "${strings.export.providers.common.properties.assetState.description}",
+            "enum": [
+                "all",
+                "visited",
+                "tagged"
+            ],
+            "default": "all",
+            "enumNames": [
+                "${strings.export.providers.common.properties.assetState.options.all}",
+                "${strings.export.providers.common.properties.assetState.options.visited}",
+                "${strings.export.providers.common.properties.assetState.options.tagged}"
+            ]
+        },
+        "subdirectories": {
+            "title": "${strings.export.providers.powerAi.subdirectories.title}",
+            "description": "${strings.export.providers.powerAi.subdirectories.description}",
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

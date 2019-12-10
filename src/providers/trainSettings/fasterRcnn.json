@@ -1,0 +1,88 @@
+{
+    "type": "object",
+    "title": "${strings.train.providers.fasterRcnn.displayName}",
+    "properties": {
+        "fasterRcnnImage": {
+            "type": "string",
+            "title": "镜像版本",
+            "description": "训练镜像使用的版本",
+            "default": "registry.cn-hangzhou.aliyuncs.com/baymin/ai-power:ai-power-wo-auto-v4.2"
+        },
+        "detectron": {
+            "title": "",
+            "type": "object",
+            "properties": {
+                "layerNumbEnum": {
+                    "type": "number",
+                    "title": "网络层数",
+                    "enum": [
+                        50,
+                        101
+                    ],
+                    "default": 50
+                },
+                "gpuNumb": {
+                    "type": "number",
+                    "title": "GPU数量",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "default": 1
+                },
+                "fpn": {
+                    "title": "FPN",
+                    "type": "boolean",
+                    "description": "开启FPN",
+                    "default": true
+                },
+                "MULTI_SCALE": {
+                    "title": "多尺度",
+                    "type": "boolean",
+                    "description": "多尺度训练",
+                    "default": true
+                },
+                "CROP_SCALE": {
+                    "title": "多尺度比例",
+                    "description": "按图像原始尺寸比例裁剪",
+                    "type": "number",
+                    "default": 50,
+                    "minimum": 50,
+                    "maximum": 100
+                },
+                "MULTI_COLOR": {
+                    "title": "多彩变换",
+                    "type": "boolean",
+                    "description": "多彩变换",
+                    "default": false
+                },
+                "useFlipped": {
+                    "title": "图像翻转",
+                    "type": "boolean",
+                    "description": "中心轴翻转",
+                    "default": false
+                },
+                "ROTATION": {
+                    "title": "图像旋转",
+                    "type": "boolean",
+                    "description": "不开随机旋转，默认旋转90,180,270",
+                    "default": false
+                },
+                "ROT_RANDOM": {
+                    "title": "随机旋转",
+                    "type": "boolean",
+                    "description": "开启后，会在[-360,360]之内随机进行旋转",
+                    "default": false
+                },
+                "ROT": {
+                    "title": "图像旋转概率",
+                    "description": "每张图片进行旋转的概率",
+                    "type": "number",
+                    "default": 50,
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        }
+    }
+}

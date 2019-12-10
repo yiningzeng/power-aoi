@@ -1,0 +1,22 @@
+{
+    "securityToken": {
+        "ui:field": "securityToken"
+    },
+    "description": {
+        "ui:widget": "textarea"
+    },
+    "sourceConnection": {
+        "ui:widget": "localFolderPicker"
+    },
+    "sourceListConnection": {
+        "items": {
+            "ui:widget": "localFolderPicker"
+        }
+    },
+    "targetConnection": {
+        "ui:widget": "localFolderPicker"
+    },
+    "tags": {
+        "ui:field": "tagsInput"
+    }
+}

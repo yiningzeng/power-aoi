@@ -1,0 +1,167 @@
+{
+    "type": "object",
+    "title": "${strings.train.providers.fasterRcnn2.displayName}",
+    "properties": {
+        "detectron2Image": {
+            "type": "string",
+            "title": "镜像版本",
+            "description": "训练镜像使用的版本",
+            "default": "registry.cn-hangzhou.aliyuncs.com/pytorch-powerai/detectron2:latest"
+        },
+        "use_gpus": {
+            "type": "number",
+            "title": "GPU数量",
+            "default": 5
+        },
+        "detectron2": {
+            "title": "",
+            "type": "object",
+            "properties": {
+                "MODEL": {
+                    "title": "",
+                    "type": "object",
+                    "properties": {
+                        "RESNETS": {
+                            "title": "",
+                            "type": "object",
+                            "properties": {
+                                "DEPTH": {
+                                    "type": "number",
+                                    "title": "网络层数",
+                                    "enum": [
+                                        50,
+                                        101
+                                    ],
+                                    "default": 101
+                                }
+                            }
+                        },
+                        "ROI_HEADS": {
+                            "title": "",
+                            "type": "object",
+                            "properties": {
+                                "NUM_CLASSES": {
+                                    "type": "string",
+                                    "title": "标签数目",
+                                    "default": "auto",
+                                    "description": "设置为auto，Power-Ai会自动配置"
+                                }
+                            }
+                        },
+                        "PIXEL_STD": {
+                            "type": "string",
+                            "title": "像素标准差",
+                            "description": "如果使用的是detectron1或者mask，需要设置为[1.0, 1.0, 1.0]。",
+                            "default": "[57.375, 57.120, 58.395]"
+                        }
+                    }
+                },
+                "SOLVER": {
+                    "title": "",
+                    "type": "object",
+                    "properties": {
+                        "MAX_ITER": {
+                            "type": "number",
+                            "title": "最大训练轮数",
+                            "default": 200000,
+                            "description": "如果训练提示内存不够，把线程数调低"
+                        },
+                        "STEPS": {
+                            "type": "string",
+                            "title": "学习率开始下降的轮数",
+                            "description": "默认为auto，Power-Ai会自动根据最大训练轮数设置合理的值",
+                            "default": "auto"
+                        },
+                        "IMS_PER_BATCH": {
+                            "type": "string",
+                            "title": "所有GPU上每批图像的数量",
+                            "description": "设置为auto，Power-Ai会自动根据GPU数量设置稳定的值，但不是GPU利用率最高的值",
+                            "default": "40"
+                        }
+                    }
+                },
+                "INPUT": {
+                    "title": "输入(INPUT)",
+                    "type": "object",
+                    "properties": {
+                        "MIN_SIZE_TRAIN": {
+                            "type": "string",
+                            "title": "缩放最小边数组",
+                            "default": "(800,)",
+                            "description": "训练期间缩放图像最小边的大小"
+                        },
+                        "MAX_SIZE_TRAIN": {
+                            "type": "number",
+                            "title": "缩放最大边尺寸",
+                            "default": 1333,
+                            "description": "训练期间缩放图像最大边的尺寸"
+                        },
+                        "CROP": {
+                            "title": "裁剪",
+                            "type": "object",
+                            "properties": {
+                                "ENABLED": {
+                                    "title": "是否开启裁剪",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "TYPE": {
+                                    "type": "string",
+                                    "title": "裁剪类型",
+                                    "enum": [
+                                        "relative",
+                                        "relative_range",
+                                        "absolute"
+                                    ],
+                                    "default": "relative_range",
+                                    "description": "--relative: (输入的图像高*CROP.SIZE[0], 输入的图像宽*CROP.SIZE[1]) --relative_range 根据范围[CROP.SIZE[0], [CROP.SIZE[1]]随机裁剪 --absolute 裁剪成绝对的长：CROP.SIZE[0], 宽：[CROP.SIZE[1]"
+                                },
+                                "SIZE": {
+                                    "type": "string",
+                                    "title": "裁剪的参数",
+                                    "default": "[0.9, 0.9]",
+                                    "description": "裁剪参数，具体看上面"
+                                }
+                            }
+                        }
+                    }
+                },
+                "DATALOADER": {
+                    "title": "数据加载器",
+                    "type": "object",
+                    "properties": {
+                        "NUM_WORKERS": {
+                            "type": "number",
+                            "title": "数据加载线程数",
+                            "default": 4,
+                            "description": "如果训练提示内存不够，把线程数调低"
+                        },
+                        "ASPECT_RATIO_GROUPING": {
+                            "type": "boolean",
+                            "title": "纵横比分组",
+                            "default": true,
+                            "description": "如果为true，则每个批处理应仅包含纵横比兼容的图像。这将纵向图像组合在一起，并且横向图像不与纵向图像进行批处理。"
+                        },
+                        "SAMPLER_TRAIN": {
+                            "type": "string",
+                            "title": "素材采集方式",
+                            "enum": [
+                                "TrainingSampler",
+                                "RepeatFactorTrainingSampler"
+                            ],
+                            "default": "TrainingSampler"
+                        },
+                        "REPEAT_THRESHOLD": {
+                            "type": "number",
+                            "title": "RepeatFactorTrainingSampler的重复阈值",
+                            "maximum": 1.0,
+                            "default": 0.1,
+                            "minimum": 0.0,
+                            "description": "如果选择RepeatFactorTrainingSampler那么这个参数会起作用，表示数据重复采集的阈值"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

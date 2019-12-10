@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "title": "${strings.export.providers.coco.displayName}",
+    "properties": {
+        "testTrainSplit": {
+            "title": "${strings.export.providers.common.properties.testTrainSplit.title}",
+            "description": "${strings.export.providers.common.properties.testTrainSplit.description}",
+            "type": "number",
+            "default": 80
+        },
+        "exportUnassigned": {
+            "title": "${strings.export.providers.pascalVoc.exportUnassigned.title}",
+            "description": "${strings.export.providers.pascalVoc.exportUnassigned.description}",
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

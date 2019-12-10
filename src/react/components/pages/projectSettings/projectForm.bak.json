@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "${strings.common.displayName}",
+            "type": "string",
+            "pattern": "^[^\\\\\\\\/:*?\\\\\\\"<>|]*$"
+        },
+        "sourceConnection": {
+            "title": "${strings.projectSettings.sourceConnection.title}",
+            "description": "${strings.projectSettings.sourceConnection.description}",
+            "type": "object"
+        },
+        "sourceListConnection": {
+            "title": "${strings.projectSettings.sourceConnection.title}",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "targetConnection": {
+            "title": "${strings.projectSettings.targetConnection.title}",
+            "description": "${strings.projectSettings.targetConnection.description}",
+            "type": "object"
+        },
+        "description": {
+            "title": "${strings.common.description}",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "sourceConnection",
+        "targetConnection"
+    ]
+}

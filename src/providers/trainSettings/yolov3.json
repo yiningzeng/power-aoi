@@ -1,0 +1,101 @@
+{
+    "type": "object",
+    "title": "${strings.train.providers.yolov3.displayName}",
+    "properties": {
+        "yolov3Image": {
+            "type": "string",
+            "title": "镜像版本",
+            "description": "训练镜像使用的版本",
+            "default": "registry.cn-hangzhou.aliyuncs.com/baymin/darknet:latest"
+        },
+        "gpu_numb": {
+            "type": "number",
+            "title": "GPU数量",
+            "default": 5
+        },
+        "yolov3net":{
+            "title": "",
+            "type": "object",
+            "properties": {
+                "width": {
+                    "type": "number",
+                    "title": "图像宽",
+                    "description": "width: 默认608",
+                    "default": 608
+                },
+                "height": {
+                    "type": "number",
+                    "title": "图像高",
+                    "description": "height: 默认608",
+                    "default": 608
+                },
+                "channels": {
+                    "type": "number",
+                    "title": "图像通道数",
+                    "description": "channels: 默认3",
+                    "default": 3
+                },
+                "batch": {
+                    "type": "number",
+                    "title": "批数据量",
+                    "description": "batch: 一批训练样本的样本数量，每batch个样本更新一次参数",
+                    "default": 64
+                },
+                "subdivisions": {
+                    "title": "批数据量细分",
+                    "type": "number",
+                    "description": "subdivisions: batch/subdivisions作为一次性送入训练器的样本数量,如果内存不够大，将batch分割为subdivisions个子batch",
+                    "default": 32
+                },
+                "decay": {
+                    "title": "权重衰减正则项",
+                    "type": "number",
+                    "description": "decay: 防止过拟合.每一次学习的过程中，将学习后的参数按照固定比例进行降低，为了防止过拟合，decay参数越大对过拟合的抑制能力越强。",
+                    "default": 0.0005
+                },
+                "angle": {
+                    "title": "旋转角度",
+                    "type": "number",
+                    "description": "angle: 通过旋转角度来生成更多训练样本",
+                    "default": 360
+                },
+                "saturation": {
+                    "title": "饱和度",
+                    "type": "number",
+                    "description": "saturation: 通过调整饱和度来生成更多训练样本",
+                    "default": 1.5
+                },
+                "exposure": {
+                    "title": "曝光量",
+                    "type": "number",
+                    "description": "exposure: 通过调整曝光量来生成更多训练样本",
+                    "default": 1.5
+                },
+                "hue": {
+                    "title": "色调",
+                    "type": "number",
+                    "description": "hue: 通过调整色调来生成更多训练样本",
+                    "default": 0.1
+                },
+                "learning_rate": {
+                    "title": "学习率",
+                    "type": "number",
+                    "description": "learning_rate: 学习率决定着权值更新的速度，设置得太大会使结果超过最优值，太小会使下降速度过慢。",
+                    "default": 0.001
+                },
+                "burn_in": {
+                    "title": "学习率变更阈值",
+                    "type": "number",
+                    "description": "burn_in: 在迭代次数小于burn_in时，其学习率的更新有一种方式，大于burn_in时，才采用policy的更新方式",
+                    "default": 1000
+                },
+                "max_batches": {
+                    "title": "最大迭代次数",
+                    "type": "number",
+                    "description": "max_batches: 通过调整色调来生成更多训练样本",
+                    "default": 100000
+                }
+            }
+        }
+    }
+}

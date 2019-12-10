@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "title": "${strings.train.providers.maskRcnn.displayName}",
+    "properties": {
+        "maskRcnnImage": {
+            "type": "string",
+            "title": "镜像版本",
+            "description": "训练镜像使用的版本",
+            "default": "registry.cn-hangzhou.aliyuncs.com/baymin/ai-power:ai-power-wo-auto-v4.2"
+        },
+        "detectron": {
+            "title": "",
+            "type": "object",
+            "properties": {
+                "layerNumbEnum": {
+                    "type": "number",
+                    "title": "网络层数",
+                    "enum": [
+                        50,
+                        101
+                    ],
+                    "default": 50
+                },
+                "gpuNumb": {
+                    "type": "number",
+                    "title": "GPU数量",
+                    "enum": [
+                        1,
+                        2,
+                        4,
+                        8
+                    ],
+                    "default": 1
+                },
+                "fpn": {
+                    "title": "FPN",
+                    "type": "boolean",
+                    "description": "开启FPN",
+                    "default": true
+                },
+                "useFlipped": {
+                    "title": "图像翻转",
+                    "type": "boolean",
+                    "description": "开启多尺度尽量不要打开图像翻转",
+                    "default": false
+                }
+            }
+        }
+    }
+}

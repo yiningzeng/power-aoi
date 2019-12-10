@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "required": [
+        "providerType"
+    ],
+    "properties": {
+        "ip": {
+            "title": "${strings.remoteTrainSettings.ip}",
+            "type": "string",
+            "default": "192.168.31.75"
+        },
+        "providerType": {
+            "title": "${strings.common.trainProvider}",
+            "type": "string"
+        }
+    }
+}

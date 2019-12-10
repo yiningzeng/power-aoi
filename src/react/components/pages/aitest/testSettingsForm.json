@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "securityTokens": {
+            "title": "${strings.appSettings.securityTokens.title}",
+            "description": "${strings.appSettings.securityTokens.description}",
+            "type": "string",
+            "enum": [
+                "yolov3-voc_last.weights"
+            ],
+            "default": "yolov3-voc_last.weights"
+        }
+    }
+}

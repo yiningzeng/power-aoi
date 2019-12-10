@@ -1,0 +1,10 @@
+{
+    "detectron": {
+        "CROP_SCALE": {
+            "ui:widget": "slider"
+        },
+        "ROT": {
+            "ui:widget": "slider"
+        }
+    }
+}
