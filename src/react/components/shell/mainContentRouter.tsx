@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "../pages/homepage/homePage";
+import Login from "../pages/login/login";
 import ActiveLearningPage from "../pages/activeLearning/activeLearningPage";
 // import TrainSettingsPage from "../pages/trainSettings/trainSettingsPage";
 import TrainPage from "../pages/train/trainPage";
@@ -21,7 +22,7 @@ export default function MainContentRouter() {
     return (
         <div className="app-content text-light">
             <Switch>
-                <Route path="/" exact component={HomePage} />
+                <Route path="/" exact component={Login} />
                 <Route path="/settings" component={AppSettingsPage} />
                 <Route path="/connections/:connectionId" component={ConnectionPage} />
                 <Route path="/connections" exact component={ConnectionPage} />

@@ -22,6 +22,10 @@ let ipcMainProxy: IpcMainProxy;
 log.transports.file.level = "info";
 autoUpdater.logger = log;
 // autoUpdater.setFeedURL("http://192.168.31.157");
+// tslint:disable-next-line:no-var-requires
+const Sequelize = require("sequelize");
+const Model = Sequelize.Model;
+class UserTest extends Model {}
 
 function createWindow() {
     // autoUpdater.setFeedURL(feedUrl);
@@ -121,13 +125,42 @@ function createWindow() {
         autoUpdater.checkForUpdatesAndNotify().then((() => {
             log.info(`我检查了更新${autoUpdater.getFeedURL()}`);
         }));
+
+// 方法2: 传递连接 URI
+        const sequelize = new Sequelize("mariadb://root:root@192.168.31.75:3306/aoi");
+        sequelize
+            .authenticate()
+            .then(() => {
+                log.info("Connection has been established successfully.");
+
+                UserTest.init({
+                    // 属性
+                    firstName: {
+                        type: Sequelize.STRING,
+                        allowNull: false,
+                    },
+                    lastName: {
+                        type: Sequelize.STRING,
+                        // allowNull 默认为 true
+                    },
+                }, {
+                    sequelize,
+                    modelName: "user_test",
+                    // 参数
+                });
+            })
+            .catch((err) => {
+                log.error("Unable to connect to the database:", err);
+            });
     } catch (e) {
         log.error(e);
     }
+
 }
 
 function onFileWatch() {
-    chokidar.watch("/home/baymin/daily-work/test/aa/", { ignored: /(^|[\/\\])\..txt/, persistent: true}).on("all", (event, path) => {
+    chokidar.watch("/home/baymin/daily-work/test/aa/",
+        { ignored: /(^|[\/\\])\..txt/, persistent: true}).on("all", (event, path) => {
         console.log(event, path);
         if (event === "add") {
             mainWindow.webContents.send("FILE_WATCH", path);
@@ -204,7 +237,8 @@ function registerContextMenu(browserWindow: BrowserWindow): void {
     const menu = Menu.buildFromTemplate(menuItems);
     Menu.setApplicationMenu(menu);
 }
-
+app.commandLine.appendSwitch("--disable-http-cache");
+// 关闭 Console 安全警告
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

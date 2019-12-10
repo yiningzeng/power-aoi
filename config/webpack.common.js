@@ -28,5 +28,9 @@ module.exports = {
     output: {
         filename: "electron.js",
         path: path.resolve(__dirname, "../build")
+    },
+    // externals: { knex: 'commonjs knex' }
+    externals: {
+        "sequelize": "require('sequelize')"
     }
 };
