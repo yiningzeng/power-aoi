@@ -147,7 +147,7 @@
         "@types/redux-logger": "^3.0.6",
         "@types/redux-mock-store": "^1.0.0",
         "cross-env": "^5.2.0",
-        "electron": "^7.0.0",
+        "electron": "^9.4.0",
         "electron-builder": "^21.2.0",
         "electron-rebuild": "^1.7.3",
         "electron-wix-msi": "^2.1.1",
