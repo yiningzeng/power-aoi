@@ -39,7 +39,7 @@
         "electron-updater": "^4.2.0",
         "ftp": "^0.3.10",
         "google-protobuf": "^3.6.1",
-        "got": "^9.6.0",
+        "got": "^11.8.5",
         "hddserial": "0.0.7",
         "hexrgb": "0.0.2",
         "jpeg-js": "^0.3.4",
